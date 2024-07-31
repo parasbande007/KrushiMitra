@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.hero {
+    text-align: center;
+    padding: 200px 20px; /* Adjust padding to ensure content is below the navbar */
+}
+
+.hero h1 {
+    font-size: 3rem;
+    color: #4d4d4d;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 5px #000, 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    color: #4d4d4d;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 5px #000, 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.learn-more, .get-started {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #000, 4px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.learn-more {
+    background-color: #588157;
+    color: #ffffff;
+}
+
+.learn-more:hover {
+    background-color: #4d7046;
+}
+
+.get-started {
+    background-color: #ffffff;
+    color: #588157;
+    border: 2px solid #588157;
+}
+
+.get-started:hover {
+    background-color: #e5e5e5;
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop and Production Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bg-dark-light {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .form-control-dark {
+            background-color: #333;
+            border: 1px solid #666;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-5">
+        <h1 class="text-center" style="color: black;">Crop and Production Prediction</h1>
+        <div class="card bg-dark-light text-white border-0">
+            <div class="card-body">
+                <h2 class="text-center" style="color: white;">Input All Features Here</h2>
+                <form action="/predict" method="post">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="State_Name" class="form-label">State Name</label>
+                            <input type="text" class="form-control form-control-dark" id="State_Name" name="State_Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="District_Name" class="form-label">District Name</label>
+                            <input type="text" class="form-control form-control-dark" id="District_Name" name="District_Name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="Season" class="form-label">Season</label>
+                            <input type="text" class="form-control form-control-dark" id="Season" name="Season" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="Area" class="form-label">Area</label>
+                            <input type="number" step="any" class="form-control form-control-dark" id="Area" name="Area" required>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-danger btn-lg mt-3 w-100">Predict</button>
+                        </div>
+                    </div>
+                </form>
+                {% if prediction %}
+                    <div class="text-center mt-4">
+                        <h2>Predicted Values:</h2>
+                        <h3 class="text-info">{{ prediction }}</h3>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+</body>
+</html>

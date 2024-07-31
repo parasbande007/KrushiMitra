@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CropCapital</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f1f1f1;
+    }
+
+    nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background-color: #ffffff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    }
+
+    .logo {
+        font-size: 2rem;
+        color: #1E3706;
+        margin-bottom: 10px;
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 3rem; /* Increased gap between sections */
+        list-style: none;
+        font-size: 1.5rem;
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-links li {
+        text-align: center;
+    }
+
+    a {
+        color: #588157;
+        text-decoration: none;
+        transition: all 300ms ease;
+    }
+
+    a:hover {
+        color: #a3b18a;
+        text-decoration: underline;
+        text-underline-offset: 1rem;
+        text-decoration-color: #a3b18a;
+    }
+
+    body {
+        padding-top: 100px; /* Adjust this value if necessary to ensure content is not hidden behind the navbar */
+    }
+  </style>
+</head>
+<body>
+  <nav id="desktop-nav">
+    <div class="logo">CropCapital</div>
+    <div>
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/scheme">Scheme</a></li>
+        <li><a href="/loan">Loan</a></li>
+        <li><a href="/form">Profile</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Your .hero section goes here -->
+ 
+</body>
+</html>

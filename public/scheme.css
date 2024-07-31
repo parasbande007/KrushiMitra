@@ -1,0 +1,76 @@
+body {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: #f8f9fa;
+    background-image: url('https://example.com/background.jpg'); /* Add your background image URL */
+    background-size: cover;
+    background-attachment: fixed;
+    color: #3a5a40;
+}
+
+.header,
+.footer {
+    background-color: #3a5a40;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.scheme-card {
+    margin-bottom: 20px;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    transition: transform 0.2s;
+}
+
+.scheme-card:hover {
+    transform: scale(1.02);
+}
+
+.scheme-card .card-body {
+    padding: 20px;
+}
+
+.scheme-card .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.scheme-card .card-subtitle {
+    color: #6c757d;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
+
+.scheme-card .card-text {
+    margin-top: 1rem;
+    display: none;
+}
+
+.scheme-card .btn-apply {
+    background-color: #588157;
+    border-color: #588157;
+    color: #ffffff;
+}
+
+.scheme-card .read-more {
+    color: #007bff;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.scheme-card img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #ced4da;
+}
+
+.container{
+    margin-top: 50px;
+}

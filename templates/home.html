@@ -1,0 +1,225 @@
+<% layout('/layouts/boilerplate') -%>
+
+<head>
+  <!-- Include Font Awesome -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    integrity="sha512-Bs3O+78p/n5TkMmDppl/lHShxfKceZ2SHxxT1upOZ5ppgU/BXx5kpA7k7Y2vHlRbqjQw9RbKi1GYYmIcX/FNFA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+</head>
+
+<body>
+  <section
+    class="hero"
+    style="
+      background-image: url('https://static.vecteezy.com/system/resources/previews/046/275/471/non_2x/a-close-up-of-a-field-of-vegetables-with-hills-in-the-background-photo.jpg');
+    "
+  >
+    <div class="hero-content">
+      <h1 style="color: #fff">Welcome to CropCapital</h1>
+      <p style="color: #fff">
+        Providing financial services tailored for farmers to help them grow and
+        succeed.
+      </p>
+      <div class="buttons">
+        <button class="learn-more">Learn More</button>
+        <a href="http://127.0.0.1:5500/templates/prediction.html">
+          <button class="get-started">Get Started</button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-fluid">
+    <div class="row">
+      <div class="col-md-3" style="background-color: #ffdb99">
+        <i class="fas fa-leaf fa-3x" style="color: #4caf50"></i>
+        <h2>Our Mission</h2>
+        <p>
+          To empower farmers with financial tools and resources for sustainable
+          growth.
+        </p>
+      </div>
+      <div class="col-md-3" style="background-color: #99ccff">
+        <i class="fas fa-eye fa-3x" style="color: #0077cc"></i>
+        <h2>Our Vision</h2>
+        <p>
+          To be the leading platform in agricultural financial services,
+          globally.
+        </p>
+      </div>
+      <div class="col-md-3" style="background-color: #ffcc99">
+        <i class="fas fa-balance-scale fa-3x" style="color: #e68a00"></i>
+        <h2>Our Values</h2>
+        <p>Integrity, Innovation, Sustainability, Customer Focus.</p>
+      </div>
+      <div class="col-md-3" style="background-color: #cc99ff">
+        <i class="fas fa-handshake fa-3x" style="color: #6a0dad"></i>
+        <h2>Join Us</h2>
+        <p>Explore career opportunities and partnerships with CropCapital.</p>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    .hero {
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      position: relative;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      /* Overlay color for better text readability */
+      z-index: 0;
+    }
+
+    .container-fluid {
+      background-color: #f9f9f9;
+      /* Light grey background similar to agdata.com */
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .col-md-3 {
+      flex: 0 0 calc(25% - 20px);
+      margin: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      text-align: center;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      background-color: #ffffff;
+      height: 400px;
+      /* White background similar to agdata.com */
+    }
+
+    .col-md-3 h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #003366;
+      /* Dark blue text color similar to agdata.com */
+    }
+
+    .col-md-3 p {
+      font-size: 1rem;
+      color: #333333;
+      /* Dark grey text color similar to agdata.com */
+    }
+
+    .additional-info {
+      padding-top: 60px;
+      padding-bottom: 60px;
+      background-color: #f0f0f0;
+    }
+
+    .card {
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-body {
+      background-color: #a3b18a;
+      padding: 30px;
+      border-radius: 10px;
+    }
+
+    .card-title {
+      color: #224b15;
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .card-text {
+      color: #333333;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .btn-primary {
+      background-color: #3a5a40;
+      border-color: #3a5a40;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #dad7cd;
+      border-color: #dad7cd;
+    }
+  </style>
+
+  <section class="additional-info py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card shadow-lg">
+            <div class="card-body">
+              <h2 class="card-title">
+                Empowering Agriculture Through Financial Solutions
+              </h2>
+              <p class="card-text">
+                At CropCapital, we believe in transforming agricultural
+                practices through innovative financial solutions. Whether you
+                are looking to expand your farm, invest in new technology, or
+                manage your finances efficiently, we are here to support you
+                every step of the way.
+              </p>
+              <p class="card-text">
+                Explore our tailored loan options and financial tools designed
+                to meet the unique needs of farmers. Join us in building a
+                sustainable future for agriculture.
+              </p>
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
