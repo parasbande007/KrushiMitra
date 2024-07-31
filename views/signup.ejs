@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" href="/signup.css">
+</head>
+<body>
+  <% if (success_messages.length > 0) { %>
+  <div class="alert alert-success">
+    <% success_messages.forEach(function(message) { %>
+      <p><%= message %></p>
+    <% }) %>
+  </div>
+  <% } %>
+  <% if (error_messages.length > 0) { %>
+  <div class="alert alert-danger">
+    <% error_messages.forEach(function(message) { %>
+      <p><%= message %></p>
+    <% }) %>
+  </div>
+  <% } %>
+  <div class="wrapper wide">
+    <div class="title">Signup Form</div>
+    <div class="form-container">
+      <div class="form-inner">
+        <form action="/signup" method="POST">
+          <div class="field">
+            <input name="email" type="email" placeholder="Email Address" required>
+          </div>
+          <div class="field">
+            <input name="password" type="password" placeholder="Password" required>
+          </div>
+          <div class="field">
+            <input name="passwordConfirm" type="password" placeholder="Confirm Password" required>
+          </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Signup">
+          </div>
+          <div class="signup-link">Already a member? <a href="/login">Login now</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

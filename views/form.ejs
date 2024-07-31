@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmer Registration</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f1f1f1;
+      padding-top: 100px; /* Ensure content is not hidden behind the navbar */
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
+      color: #1E3706;
+      margin-bottom: 10px;
+    }
+
+    .logo-img {
+      width: 50px; /* Adjust the size as needed */
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .nav-center {
+      display: flex;
+      flex-grow: 1;
+      justify-content: center;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 5rem;
+      list-style: none;
+      font-size: 1.5rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .nav-links li {
+      text-align: center;
+    }
+
+    a {
+      color: #588157;
+      text-decoration: none;
+      transition: all 300ms ease;
+    }
+
+    a:hover {
+      color: #a3b18a;
+      text-decoration: underline;
+      text-underline-offset: 1rem;
+      text-decoration-color: #a3b18a;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .btn {
+      background-color: #588157;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 300ms ease;
+      margin-left: -9px;
+    }
+
+    .btn:hover {
+      background-color: #a3b18a;
+    }
+
+    .img-fluid {
+      margin-top: 80px;
+    }
+
+    .card-registration {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: white;
+    }
+
+    .form-label {
+      margin-bottom: 0.5rem;
+    }
+
+    .form-control {
+      height: 48px; /* Adjust height as needed */
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-submit {
+      background-color: white;
+    }
+
+    .custom-select {
+      height: 48px;
+    }
+
+    .d-flex.justify-content-end .btn {
+      margin-left: 10px;
+    }
+  </style>
+</head>
+<body>
+  <nav id="desktop-nav">
+    <div class="logo">
+      <img src="https://media.licdn.com/dms/image/C4D12AQGGhLjSGwwZlw/article-cover_image-shrink_600_2000/0/1601205955175?e=2147483647&v=beta&t=BPIUJdgnIoxjgMBJOv_Fc0MMRUNoB8gamPwNQg6ILPo" alt="Logo" class="logo-img">
+      KrushiMitra
+    </div>
+    <div class="nav-center">
+      <ul class="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="/scheme">Scheme</a></li>
+        <li><a href="/loan">Loan</a></li>
+        <li><a href="/form">Profile</a></li>
+        <li><a href="/crop">Prices</a></li>
+        <li><a href="http://127.0.0.1:5000/">Predictions</a></li>
+      </ul>
+    </div>
+    <div class="nav-buttons">
+      <% if (!currUser) { %>
+        <button class="btn" onclick="window.location.href='/signup'">SignUp</button>
+        <button class="btn" onclick="window.location.href='/login'">Login</button>
+      <% } %>
+      <% if (currUser) { %>
+        <form action="/logout" style="display:inline;">
+          <button class="btn" type="submit">Logout</button>
+        </form>
+      <% } %>
+    </div>
+  </nav>
+
+  <section class="h-100">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col">
+          <div class="card card-registration my-4">
+            <div class="row g-0">
+              <div class="col-xl-6 d-none d-xl-block">
+                <img src="https://thumbs.dreamstime.com/b/indian-farmer-india-village-cheering-character-working-bangladesh-people-rural-worker-business-concept-vector-illustration-324010233.jpg"
+                     alt="Sample photo" class="img-fluid"
+                     style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;">
+              </div>
+              <div class="col-xl-6">
+                <div class="card-body p-md-5 text-black">
+                  <h3 class="mb-5 text-uppercase">Farmer Registration Form</h3>
+
+                  <form action="/submit-form" method="POST">
+                    <div class="form-group">
+                      <label class="form-label" for="name">Name</label>
+                      <input type="text" id="name" name="name" class="form-control form-control-lg" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="email">Email</label>
+                      <input type="email" id="email" name="email" class="form-control form-control-lg" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="country">Country</label>
+                      <input type="text" id="country" name="country" class="form-control form-control-lg" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="state">State</label>
+                      <input type="text" id="state" name="state" class="form-control form-control-lg" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="city">City</label>
+                      <input type="text" id="city" name="city" class="form-control form-control-lg" required>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="crops">Crops</label>
+                      <select id="crops" name="crops" class="custom-select form-control-lg" required>
+                        <option value="" disabled selected>Select crops...</option>
+                        <option value="Wheat">Wheat</option>
+                        <option value="Corn">Corn</option>
+                        <option value="Rice">Rice</option>
+                        <option value="Soybeans">Soybeans</option>
+                        <option value="Barley">Barley</option>
+                        <option value="Cotton">Cotton</option>
+                        <option value="Sugarcane">Sugarcane</option>
+                        <option value="Potatoes">Potatoes</option>
+                        <option value="Tomatoes">Tomatoes</option>
+                        <option value="Onions">Onions</option>
+                      </select>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="landSize">Land Size (in acres)</label>
+                      <input type="text" id="landSize" name="landSize" class="form-control form-control-lg" required>
+                    </div>
+
+                    <div class="d-flex justify-content-end pt-3">
+                      <button type="reset" class="btn btn-light btn-lg me-3">Reset All</button>
+                      <button type="submit" class="btn btn-warning btn-lg">Submit Form</button>
+                    </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

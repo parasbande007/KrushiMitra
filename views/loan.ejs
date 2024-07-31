@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Dashboard</title>
+    <link rel="stylesheet" href="/loans.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <nav id="desktop-nav">
+        <div class="logo">
+            <img src="https://media.licdn.com/dms/image/C4D12AQGGhLjSGwwZlw/article-cover_image-shrink_600_2000/0/1601205955175?e=2147483647&v=beta&t=BPIUJdgnIoxjgMBJOv_Fc0MMRUNoB8gamPwNQg6ILPo" alt="Logo" class="logo-img">
+            KrushiMitra
+        </div>
+        <div class="nav-center">
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/scheme">Scheme</a></li>
+                <li><a href="/loan">Loan</a></li>
+                <li><a href="/form">Profile</a></li>
+                <li><a href="/crop">Prices</a></li>
+                <li><a href="http://127.0.0.1:5000/">Predictions</a></li>
+            </ul>
+        </div>
+        <div class="nav-buttons">
+            <% if (!currUser) { %>
+                <button class="btn" onclick="window.location.href='/signup'">SignUp</button>
+                <button class="btn" onclick="window.location.href='/login'">Login</button>
+            <% } %>
+            <% if (currUser) { %>
+                <form action="/logout" style="display:inline;">
+                    <button class="btn" type="submit">Logout</button>
+                </form>
+            <% } %>
+        </div>
+    </nav>
+    
+    
+    <div class="container">
+        <div class="form-container" id="formContainer">
+            <h2>Loan Details</h2>
+            <form id="loanForm">
+                <div class="input-group">
+                    <label for="loanAmount">Loan Amount (₹)</label>
+                    <input type="number" id="loanAmount" required>
+                </div>
+                <div class="input-group">
+                    <label for="amountPaid">Amount Paid (₹)</label>
+                    <input type="number" id="amountPaid" required>
+                </div>
+                <div class="input-group">
+                    <label for="interestRate">Interest Rate (%)</label>
+                    <input type="number" id="interestRate" required>
+                </div>
+                <div class="input-group">
+                    <label for="loanDuration">Loan Duration (years)</label>
+                    <input type="number" id="loanDuration" required>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <div class="dashboard" id="dashboard" style="display: none;">
+            <div class="summary">
+                <div class="summary-item">
+                    <div class="summary-icon">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                    </div>
+                    <div class="summary-details">
+                        <div class="amount" id="displayLoanAmount"></div>
+                        <div class="label">Loan Amount</div>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                    </div>
+                    <div class="summary-details">
+                        <div class="amount" id="displayAmountPaid"></div>
+                        <div class="label">Amount Paid</div>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                    </div>
+                    <div class="summary-details">
+                        <div class="amount" id="displayAmountRemain"></div>
+                        <div class="label">Amount Remain</div>
+                    </div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-icon">
+                        <i class="fa-solid fa-sack-dollar"></i>
+                    </div>
+                    <div class="summary-details">
+                        <div class="amount" id="displayInstallment"></div>
+                        <div class="label">Installment</div>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-container">
+                <label for="progressBar">Loan Paid:</label>
+                <progress id="progressBar" value="0" max="100"></progress>
+                <span id="progressPercentage">0%</span>
+            </div>
+            <div class="installment-container">
+                <p>Have you paid the current installment?</p>
+                <button class="installment-btn" id="yesButton">Yes</button>
+                <button class="installment-btn" id="noButton">No</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('loanForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const loanAmount = parseFloat(document.getElementById('loanAmount').value);
+        const amountPaid = parseFloat(document.getElementById('amountPaid').value);
+        const interestRate = parseFloat(document.getElementById('interestRate').value);
+        const loanDuration = parseFloat(document.getElementById('loanDuration').value);
+
+        const amountRemain = loanAmount - amountPaid;
+        const monthlyInterestRate = interestRate / 12 / 100;
+        const totalMonths = loanDuration * 12;
+        const installment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -totalMonths));
+
+        document.getElementById('displayLoanAmount').textContent = `₹ ${loanAmount.toFixed(2)}`;
+        document.getElementById('displayAmountPaid').textContent = `₹ ${amountPaid.toFixed(2)}`;
+        document.getElementById('displayAmountRemain').textContent = `₹ ${amountRemain.toFixed(2)}`;
+        document.getElementById('displayInstallment').textContent = `₹ ${installment.toFixed(2)}`;
+
+        let progress = (amountPaid / loanAmount) * 100;
+        if (progress > 100) progress = 100;
+        document.getElementById('progressBar').value = progress;
+        document.getElementById('progressPercentage').textContent = `${progress.toFixed(2)}%`;
+
+        document.getElementById('formContainer').style.display = 'none';
+        document.getElementById('dashboard').style.display = 'flex';
+    });
+
+    document.getElementById('yesButton').addEventListener('click', function() {
+        const installment = parseFloat(document.getElementById('displayInstallment').textContent.replace('₹ ', ''));
+        let amountPaid = parseFloat(document.getElementById('displayAmountPaid').textContent.replace('₹ ', ''));
+        const loanAmount = parseFloat(document.getElementById('displayLoanAmount').textContent.replace('₹ ', ''));
+        let amountRemain = parseFloat(document.getElementById('displayAmountRemain').textContent.replace('₹ ', ''));
+
+        if (amountRemain <= installment) {
+            amountPaid += amountRemain;
+            amountRemain = 0;
+        } else {
+            amountPaid += installment;
+            amountRemain -= installment;
+        }
+
+        document.getElementById('displayAmountPaid').textContent = `₹ ${amountPaid.toFixed(2)}`;
+        document.getElementById('displayAmountRemain').textContent = `₹ ${amountRemain.toFixed(2)}`;
+
+        let progress = (amountPaid / loanAmount) * 100;
+        if (progress > 100) progress = 100;
+        document.getElementById('progressBar').value = progress;
+        document.getElementById('progressPercentage').textContent = `${progress.toFixed(2)}%`;
+    });
+
+    document.getElementById('noButton').addEventListener('click', function() {
+        alert("No payment made. Progress remains the same.");
+    });
+    </script>
+</body>
+</html>

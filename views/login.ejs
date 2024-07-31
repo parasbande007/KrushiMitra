@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="/signup.css">
+</head>
+<body>
+  <% if (error_messages.length > 0) { %>
+  <div class="alert alert-danger">
+    <% error_messages.forEach(function(message) { %>
+      <p><%= message %></p>
+    <% }) %>
+  </div>
+  <% } %>
+  <div class="wrapper wide">
+    <div class="title">Login Form</div>
+    <div class="form-container">
+      <div class="form-inner">
+        <form action="/login" method="POST">
+          <div class="field">
+            <input name="email" type="email" placeholder="Email Address" required>
+          </div>
+          <div class="field">
+            <input name="password" type="password" placeholder="Password" required>
+          </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Login">
+          </div>
+          <div class="signup-link">Not a member? <a href="/signup">Signup now</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
